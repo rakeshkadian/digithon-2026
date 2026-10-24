@@ -1,0 +1,9 @@
+# Postgres for the Co-Pilot's own data. The Employee App has its own database.
+services:
+  copilot-db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: copilot
+      POSTGRES_USER: copilot
+      POSTGRES_PASSWORD: copilot
+    ports: ["5433:5432"]

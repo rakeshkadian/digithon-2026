@@ -1,0 +1,16 @@
+
+# Node.js / Angular
+**/node_modules/
+**/dist/
+**/.angular/
+
+# Java / Maven
+**/target/
+
+# IntelliJ IDEA
+.idea/
+**/.idea/
+*.iml
+
+# Logs
+*.log

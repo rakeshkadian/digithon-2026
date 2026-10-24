@@ -1,0 +1,36 @@
+server:
+  port: 8081
+
+copilot:
+  workdir: ${COPILOT_WORKDIR:/tmp/copilot-repos}
+  llm-replay: ${COPILOT_LLM_REPLAY:false}
+  # Base64 of 32 random bytes. Same value must be set in the Employee App as PI_MASTER_KEY.
+  # Generate: openssl rand -base64 32
+  master-key: ${PI_MASTER_KEY:c2FtcGxlLWRlbW8ta2V5LXNhbXBsZS1kZW1vLWtleS0xMjM0NTY=}
+  git:
+    author-name: PI Security Co-Pilot
+    author-email: pi-copilot@example.com
+
+spring:
+  application:
+    name: pi-copilot
+  datasource:
+    url: ${COPILOT_DB_URL:jdbc:postgresql://localhost:5432/pi_copilot}
+    username: ${COPILOT_DB_USER:postgres}
+    password: ${COPILOT_DB_PASSWORD:password}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+  ai:
+    openai:
+      base-url: ${LLM_BASE_URL:https://api.openai.com}
+      api-key: ${OPENAI_API_KEY:${LLM_API_KEY:}}
+      chat:
+        options:
+          model: ${LLM_MODEL:gpt-4o-mini}
+          temperature: 0.0
+
+logging:
+  level:
+    com.copilot: DEBUG
